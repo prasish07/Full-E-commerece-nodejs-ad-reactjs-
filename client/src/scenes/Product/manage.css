@@ -1,0 +1,50 @@
+.add_btn {
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.add_btn:hover {
+  background-color: #414141;
+}
+
+.add_btn:active {
+  background-color: #424442;
+}
+
+.head_product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.center {
+  position: relative;
+  left: 40%;
+}
+
+.add_btn {
+  margin-top: 60px;
+  margin-left: auto;
+}
+.add_product_container {
+  margin: 20px;
+  display: flex;
+}
+
+.form {
+  margin-left: 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
