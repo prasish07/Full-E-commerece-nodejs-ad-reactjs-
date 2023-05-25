@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const path = require("path");
+const cloudinary = require("cloudinary").v2;
 const customeError = require("../errors");
+const fs = require("fs");
 const {
   createTokenUser,
   attachCookiesToResponse,
@@ -81,28 +83,38 @@ const updateUserPassword = async (req, res) => {
   });
 };
 
+// const uploadProfile = async (req, res) => {
+//   if (!req.files) {
+//     throw new BadRequestError("Not found");
+//   }
+//   const productImage = req.files.Image;
+//   if (!productImage.mimetype.startsWith("image")) {
+//     throw new CustomError.BadRequestError("Please select an image type file");
+//   }
+
+//   const maxSize = 1024 * 1024 * 1024;
+
+//   if (productImage.size > maxSize) {
+//     throw new BadRequestError("please upload image less than 10mb");
+//   }
+//   const ImagePath = path.join(
+//     __dirname,
+//     "../Public/uploads/" + `${productImage.name}`
+//   );
+//   await productImage.mv(ImagePath);
+//   return res.status(StatusCodes.OK).json({
+//     image: { src: `http://localhost:5000/uploads/${productImage.name}` },
+//   });
+// };
+
 const uploadProfile = async (req, res) => {
-  if (!req.files) {
-    throw new BadRequestError("Not found");
-  }
-  const productImage = req.files.Image;
-  if (!productImage.mimetype.startsWith("image")) {
-    throw new CustomError.BadRequestError("Please select an image type file");
-  }
-
-  const maxSize = 1024 * 1024 * 1024;
-
-  if (productImage.size > maxSize) {
-    throw new BadRequestError("please upload image less than 10mb");
-  }
-  const ImagePath = path.join(
-    __dirname,
-    "../Public/uploads/" + `${productImage.name}`
+  console.log(req.files.Image);
+  const result = await cloudinary.uploader.upload(
+    req.files.Image.tempFilePath,
+    { use_filename: true, folder: "file-upload" }
   );
-  await productImage.mv(ImagePath);
-  return res.status(StatusCodes.OK).json({
-    image: { src: `http://localhost:5000/uploads/${productImage.name}` },
-  });
+  fs.unlinkSync(req.files.Image.tempFilePath); // corrected to req.files.Image
+  res.status(200).json({ image: { src: result.secure_url } }); // corrected to 200
 };
 
 const uploadUserv2 = async (req, res) => {

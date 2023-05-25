@@ -12,6 +12,12 @@ const { auth, authorizePermission } = require("./middleware/authentication");
 const fileUpload = require("express-fileupload");
 const reviewRoute = require("./routes/reviewRoutes");
 const orderRoute = require("./routes/orderRoutes");
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 //Swagger
 const swaggerUI = require("swagger-ui-express");
@@ -52,7 +58,7 @@ app.use(mongoSenitize());
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./Public"));
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");

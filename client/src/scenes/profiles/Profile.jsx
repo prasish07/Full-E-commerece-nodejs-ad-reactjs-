@@ -36,6 +36,7 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("Image", file);
     const { data } = await axios.post("api/v1/users/uploadProfile", formData);
+    console.log(data);
     if (data) {
       const value = await axios.post("api/v1/users/uploadUserv2", {
         image: data.image.src,
