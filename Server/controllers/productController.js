@@ -49,7 +49,9 @@ const deleteProduct = async (req, res) => {
     throw new CustomerError.Unauthorized("Unauthorized");
   await product.remove();
 
-  res.status(StatusCodes.OK).json({ status: "Product successfully deleted" });
+  res
+    .status(StatusCodes.OK)
+    .json({ status: "Product successfully deleted", success: true });
 };
 const uploadImage = async (req, res) => {
   console.log(req.files);

@@ -16,6 +16,9 @@ import { fetchData } from "./state/user";
 import ManageProduct from "./scenes/Product/ManageProduct";
 import PrivateRoute from "./utils/PrivateRoute";
 import AddProduct from "./scenes/Product/AddProduct";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import Error from "./scenes/Error/Error";
+import ManageUser from "./scenes/user/ManageUser";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -31,19 +34,20 @@ const App = () => {
   return (
     <div className="app">
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<CreateAccount />} />
-        </Routes>
         <Navbar />
-
         <ScrollToTop />
         <Routes>
+          <Route path="*" element={<Error />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<CreateAccount />} />
           <Route path="/" element={<Home />} />
           <Route path="item/:itemId" element={<ItemDetails />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/success" element={<Confirmation />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={<ProtectedRoute component={Profile} />}
+          />
           <Route
             path="/manage-product"
             element={<PrivateRoute component={ManageProduct} />}
@@ -51,6 +55,10 @@ const App = () => {
           <Route
             path="/manage-product/add-product"
             element={<PrivateRoute component={AddProduct} />}
+          />
+          <Route
+            path="/manage-user"
+            element={<PrivateRoute component={ManageUser} />}
           />
         </Routes>
         <CartMenu />

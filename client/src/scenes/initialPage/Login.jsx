@@ -70,6 +70,7 @@ const Login = () => {
                 name="password"
                 value={values.password}
                 handleChange={handleChange}
+                component="flex_box"
               />
             </div>
             <button className="btn btn-block" type="submit">

@@ -58,7 +58,6 @@ hr:after {
 }
 
 .info {
-  border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -568,53 +567,6 @@ Pagination
   pointer-events: none; /* Prevent interaction with the body content */
 }
 
-.container_profile {
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.image {
-  flex: 0 0 auto;
-  margin-right: 20px;
-}
-
-.image img {
-  width: 400px;
-  height: 400px;
-  border-radius: 10%;
-}
-
-.info {
-  flex: 1;
-  border: none;
-  position: relative;
-  top: 0;
-  margin-left: 20px;
-}
-
-.name {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.email {
-  font-size: 18px;
-  color: #888888;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 .title {
   margin-top: 70px;
   color: #333; /* Set the text color to dark gray */

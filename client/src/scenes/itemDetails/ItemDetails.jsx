@@ -9,6 +9,7 @@ import { shades } from "../../theme";
 import { addToCart, setItem } from "../../state";
 import { useParams } from "react-router-dom";
 import Item from "../../componets/Item";
+import Review from "../review/Review";
 
 const ItemDetails = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,6 @@ const ItemDetails = () => {
     getItem();
     getItems();
   }, [itemId]);
-  console.log(item);
 
   return (
     <Box width="80%" m="80px auto">
@@ -121,10 +121,8 @@ const ItemDetails = () => {
         </Tabs>
       </Box>
       <Box display="flex" flexWrap="wrap" gap="15px">
-        {value === "description" && (
-          <div>{item?.attributes?.longDescription}</div>
-        )}
-        {value === "reviews" && <div>Review to be added in next version</div>}
+        {value === "description" && <div>{item?.description}</div>}
+        {value === "reviews" && <Review id={item._id} />}
       </Box>
       {/* Related items but only taking 4 item from the list */}
       <Box mt="50px" width="100%">

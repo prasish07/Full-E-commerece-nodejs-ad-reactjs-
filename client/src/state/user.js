@@ -8,7 +8,7 @@ const initialState = {
   popup: "false",
   message: "",
   message2: "",
-  YesNoPopup: false,
+  YesNoPopup: "",
 };
 const authSlice = createSlice({
   name: "auth",

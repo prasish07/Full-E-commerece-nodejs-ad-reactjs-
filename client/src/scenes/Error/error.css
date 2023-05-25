@@ -1,0 +1,35 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.page div {
+  text-align: center;
+}
+
+.page h1 {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+.page h4 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.page .btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.page .btn:hover {
+  background-color: #555;
+}

@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Product from "../../componets/Product";
-import "./manage.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import User from "./User";
 
-const ManageProduct = () => {
+const ManageUser = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState(null);
+  const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const { data } = await axios.get("api/v1/products");
-    setProducts(data.products);
+    const { data } = await axios.get("api/v1/users");
+    setUsers(data.msg);
     setLoading(false);
   };
   useEffect(() => {
@@ -22,16 +21,10 @@ const ManageProduct = () => {
   return (
     <>
       <div className="head_product">
-        <h1 className="title center">Manage Product</h1>
-        <button
-          className="add_btn right"
-          onClick={() => navigate("/manage-product/add-product")}
-        >
-          Add
-        </button>
+        <h1 className="title">Manage User</h1>
       </div>
       <div className="product_container">
-        {products === null ? (
+        {users === null ? (
           <div className="loading-animation" style={{ marginTop: "70px" }}>
             <div className="loading-bar"></div>
             <div className="loading-bar"></div>
@@ -39,8 +32,8 @@ const ManageProduct = () => {
             <div className="loading-bar"></div>
           </div>
         ) : (
-          products.map((item) => {
-            return <Product product={item} key={item._id} />;
+          users.map((item) => {
+            return <User User={item} key={item._id} />;
           })
         )}
       </div>
@@ -48,4 +41,4 @@ const ManageProduct = () => {
   );
 };
 
-export default ManageProduct;
+export default ManageUser;

@@ -34,7 +34,6 @@ const Navbar = () => {
   const { logoutUser } = useGlobalContext();
   let user = localStorage.getItem("user");
   user = JSON.parse(user);
-  console.log(user);
   const isOpen = useSelector((state) => state.auth.YesNoPopup);
   const message = useSelector((state) => state.auth.message2);
 
@@ -45,6 +44,11 @@ const Navbar = () => {
 
   const handleClose = () => {
     setAnchorE1(null);
+  };
+
+  const handleLogout = () => {
+    navigate("/login");
+    logoutUser();
   };
 
   // useEffect(() => {
@@ -151,7 +155,14 @@ const Navbar = () => {
             >
               Manage product
             </MenuItem>
-            <MenuItem onClick={handleClose}>Option 2</MenuItem>
+            <MenuItem
+              onClick={() => {
+                navigate("/manage-user");
+                handleClose();
+              }}
+            >
+              Manage User
+            </MenuItem>
             <MenuItem onClick={handleClose}>Option 3</MenuItem>
           </Menu>
           {user ? (
@@ -161,7 +172,7 @@ const Navbar = () => {
                 console.log("Cliked logout");
                 dispatch(
                   setYesNoPopup({
-                    value: true,
+                    value: "logout",
                     message: "Loging out!! Are you sure?",
                   })
                 );
@@ -181,10 +192,8 @@ const Navbar = () => {
       </Box>
       <YesNoPopup
         message={useSelector((state) => state.auth.message2)}
-        onYes={() => {
-          navigate("/login");
-          logoutUser();
-        }}
+        onYes={handleLogout}
+        state="logout"
       />
     </Box>
   );

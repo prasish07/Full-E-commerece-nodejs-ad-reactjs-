@@ -38,7 +38,14 @@ app.use(
   })
 );
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Replace with the origin(s) you want to allow
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify the allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify the allowed headers
+    credentials: true, // Allow sending cookies and authorization headers
+  })
+);
 app.use(xss());
 app.use(mongoSenitize());
 

@@ -1,0 +1,147 @@
+.oldReview {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.reviewImage {
+  flex-shrink: 0;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.reviewImage {
+  flex-shrink: 0;
+  margin-right: 20px;
+  padding: 10px;
+  border: 0px solid gray;
+  border-radius: 10px;
+
+  display: flex; /* Added to align items */
+  justify-content: center; /* Added to center the image vertically */
+  align-items: center; /* Added to center the image horizontally */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reviewImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.commentSection {
+  flex-grow: 1;
+}
+
+.title_rating {
+  font-size: 16px;
+  margin: 0;
+}
+
+.comment {
+  font-size: 14px;
+  /* margin: 10px 0; */
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.title_1 {
+  margin: 10px 0px;
+}
+
+.current_review__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.commentSection {
+  margin-bottom: 20px;
+}
+
+.form-label_comment {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form_input_comment {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.Current_Review {
+  width: 100%;
+}
+
+.current_review__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.commentSection {
+  margin-bottom: 20px;
+}
+
+.form-label_comment {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form_input_comment {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #474747;
+}
+
+.Current_Review {
+  width: 100%;
+}
+
+.form_comment {
+  width: 100%;
+}
+
+.css-190jr6a {
+  gap: 0px;
+}

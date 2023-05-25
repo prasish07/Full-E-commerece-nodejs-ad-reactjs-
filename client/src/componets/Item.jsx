@@ -12,9 +12,6 @@ const Item = ({ item, width }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
-  // const {
-  //   palette: { neutral },
-  // } = useTheme;
 
   const { category, price, name, image } = item;
 

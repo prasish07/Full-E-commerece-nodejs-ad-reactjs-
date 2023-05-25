@@ -73,7 +73,7 @@ const MainCarousel = () => {
               height: "700px",
               objectFit: "cover",
               backgroundAttachment: "fixed",
-              marginTop: "70px",
+              // marginTop: "70px",
             }}
           />
           <Box

@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
+import axios from "axios";
+import Popup from "./Popup";
 
-const prod = ({ product }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { setPopup } from "../state/user";
+
+const Product = ({ product }) => {
+  const dispatch = useDispatch();
+  const message = useSelector((state) => state.auth.message);
+
+  const handleDelete = async ({ _id, name }) => {
+    try {
+      const { data } = await axios.delete(`/api/v1/products/${_id}`);
+      console.log(data.success);
+      if (data.success) {
+        dispatch(
+          setPopup({
+            value: "true",
+            message: `Product ${name} has been succesfully deleted!!`,
+          })
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="product">
@@ -29,13 +54,18 @@ const prod = ({ product }) => {
           <IconButton>
             <EditIcon />
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              handleDelete(product);
+            }}
+          >
             <DeleteIcon />
           </IconButton>
         </div>
       </div>
+      <Popup message={message} onOk={() => console.log()} />
     </>
   );
 };
 
-export default prod;
+export default Product;
