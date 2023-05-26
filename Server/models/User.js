@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
     default:
       "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg",
   },
+  aboutme: String,
 });
 
 userSchema.pre("save", async function () {

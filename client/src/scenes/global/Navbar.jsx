@@ -163,7 +163,6 @@ const Navbar = () => {
             >
               Manage User
             </MenuItem>
-            <MenuItem onClick={handleClose}>Option 3</MenuItem>
           </Menu>
           {user ? (
             <IconButton

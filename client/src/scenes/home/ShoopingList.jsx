@@ -19,7 +19,7 @@ const ShoppingList = () => {
 
   async function getItems() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const { data } = await axios.get("http://localhost:5000/api/v1/products");
+    const { data } = await axios.get("/api/v1/products");
     console.log(data);
     const itemsJson = data;
     dispatch(setItem(itemsJson.products));
@@ -80,23 +80,50 @@ const ShoppingList = () => {
             <div className="loading-bar"></div>
           </div>
         )}
-        {value === "all" &&
-          !loading &&
-          items.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
-        {value === "bedroom" &&
-          bedroomItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
-        {value === "office" &&
-          officeItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
-        {value === "kitchen" &&
-          kitchenItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
+        {!loading && (
+          <>
+            {value === "all" &&
+              items.map((item, index) => (
+                <Item
+                  item={item}
+                  key={`${item.name}-${item.id}`}
+                  style={{
+                    animationDelay: `${(index + 1) * 0.1}s`, // Delay each product animation
+                  }}
+                />
+              ))}
+            {value === "bedroom" &&
+              bedroomItems.map((item, index) => (
+                <Item
+                  item={item}
+                  key={`${item.name}-${item.id}`}
+                  style={{
+                    animationDelay: `${(index + 1) * 0.1}s`, // Delay each product animation
+                  }}
+                />
+              ))}
+            {value === "office" &&
+              officeItems.map((item, index) => (
+                <Item
+                  item={item}
+                  key={`${item.name}-${item.id}`}
+                  style={{
+                    animationDelay: `${(index + 1) * 0.1}s`, // Delay each product animation
+                  }}
+                />
+              ))}
+            {value === "kitchen" &&
+              kitchenItems.map((item, index) => (
+                <Item
+                  item={item}
+                  key={`${item.name}-${item.id}`}
+                  style={{
+                    animationDelay: `${(index + 1) * 0.1}s`, // Delay each product animation
+                  }}
+                />
+              ))}
+          </>
+        )}
       </Box>
     </Box>
   );

@@ -713,3 +713,48 @@ Pagination
 .button_com button:last-child {
   margin-right: 0;
 }
+
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.loading-bar {
+  width: 20px;
+  height: 80px;
+  background-color: #ccc;
+  margin-right: 10px;
+  animation: loading-animation 1s infinite;
+}
+
+@keyframes loading-animation {
+  0% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1.2);
+  }
+  100% {
+    transform: scaleY(0.4);
+  }
+}
+
+.subscribe_btn {
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.subscribe_btn:hover {
+  background-color: #2d2d2d;
+}
+
+.subscribe_btn:active {
+  background-color: #2b2b2b;
+}

@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setPopup } from "../state/user";
+import Popup from "../componets/Popup";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const dispatch = useDispatch();

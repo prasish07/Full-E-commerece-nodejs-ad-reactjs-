@@ -19,6 +19,7 @@ import AddProduct from "./scenes/Product/AddProduct";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Error from "./scenes/Error/Error";
 import ManageUser from "./scenes/user/ManageUser";
+import EditProduct from "./scenes/Product/EditProduct";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -51,6 +52,10 @@ const App = () => {
           <Route
             path="/manage-product"
             element={<PrivateRoute component={ManageProduct} />}
+          />
+          <Route
+            path="/manage-product/update Product"
+            element={<PrivateRoute component={EditProduct} />}
           />
           <Route
             path="/manage-product/add-product"

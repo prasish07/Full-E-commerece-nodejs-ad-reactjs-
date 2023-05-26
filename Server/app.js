@@ -12,6 +12,7 @@ const { auth, authorizePermission } = require("./middleware/authentication");
 const fileUpload = require("express-fileupload");
 const reviewRoute = require("./routes/reviewRoutes");
 const orderRoute = require("./routes/orderRoutes");
+const mailRoute = require("./routes/mailRoutes");
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -79,6 +80,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/orders", orderRoute);
+app.use("/api/v1/", mailRoute);
 
 // middleware
 app.use(notFoundMiddleware);

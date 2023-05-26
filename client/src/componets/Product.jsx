@@ -4,11 +4,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
 import axios from "axios";
 import Popup from "./Popup";
+import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setPopup } from "../state/user";
 
 const Product = ({ product }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const message = useSelector((state) => state.auth.message);
 
@@ -51,7 +53,11 @@ const Product = ({ product }) => {
             alignItems: "center",
           }}
         >
-          <IconButton>
+          <IconButton
+            onClick={() =>
+              navigate(`/manage-product/update Product?id=${product._id}`)
+            }
+          >
             <EditIcon />
           </IconButton>
           <IconButton

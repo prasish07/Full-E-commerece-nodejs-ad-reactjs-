@@ -71,3 +71,27 @@
 .form-input {
   font-size: 18px;
 }
+
+.password {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 50px;
+  align-items: center;
+}
+
+/* Add your CSS styles here */
+.update_btn {
+  background-color: #000000; /* Green background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Add padding to the button */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Add border radius */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Add smooth transition effect */
+  height: 40px;
+}
+
+.update_btn:hover {
+  background-color: #2b2b2b; /* Darker green color on hover */
+}

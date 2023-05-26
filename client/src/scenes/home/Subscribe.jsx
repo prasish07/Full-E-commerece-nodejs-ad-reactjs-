@@ -2,9 +2,16 @@ import React from "react";
 import { Box, InputBase, Divider, Typography, IconButton } from "@mui/material";
 import MarkEmailReadOutLinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
 import { useState } from "react";
+import axios from "axios";
 
 const Subscribe = () => {
   const [email, setEmail] = useState("");
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const { data } = await axios.post("/api/v1/sendEmail", { to: email });
+    alert("Your have successfully subscribe to our service, Thank you");
+    setEmail("");
+  };
   return (
     <Box width="80%" margin="80px auto" textAlign="center">
       <IconButton>
@@ -29,7 +36,9 @@ const Subscribe = () => {
           value={email}
         />
         <Divider className="divider" orientation="vertical" />
-        <Typography className="subscribe">Subscribe</Typography>
+        <button className="subscribe_btn" onClick={handleClick}>
+          Subscribe
+        </button>
       </Box>
     </Box>
   );

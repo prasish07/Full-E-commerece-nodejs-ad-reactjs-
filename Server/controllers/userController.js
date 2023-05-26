@@ -76,7 +76,6 @@ const updateUserPassword = async (req, res) => {
   if (!check) throw new customeError.BadRequestError("Wrong password");
   user.password = newPassword;
   await user.save();
-  console.log(user);
   res.status(200).json({
     success: true,
     status: "password updated",
@@ -108,7 +107,6 @@ const updateUserPassword = async (req, res) => {
 // };
 
 const uploadProfile = async (req, res) => {
-  console.log(req.files.Image);
   const result = await cloudinary.uploader.upload(
     req.files.Image.tempFilePath,
     { use_filename: true, folder: "file-upload" }
@@ -123,7 +121,6 @@ const uploadUserv2 = async (req, res) => {
     new: true,
     runValidators: true,
   });
-  console.log(user);
   res.status(StatusCodes.OK).json({ success: "OK", user });
 };
 
