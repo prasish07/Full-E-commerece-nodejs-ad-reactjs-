@@ -27,7 +27,9 @@ const EditProduct = () => {
   const fetchProduct = async () => {
     try {
       console.log(id);
-      const value = await axios.get(`/api/v1/products/${id}`);
+      const value = await axios.get(
+        `https://e-commerece-server.onrender.com/api/v1/products/${id}`
+      );
       console.log(value.data.product);
       setUserEnterData(value.data.product);
       setImage(value.data.product.image);
@@ -48,21 +50,24 @@ const EditProduct = () => {
     formData.append("Image", file);
     try {
       const { data } = await axios.post(
-        "/api/v1/users/uploadProfile",
+        "https://e-commerece-server.onrender.com/api/v1/users/uploadProfile",
         formData
       );
       console.log(data);
       if (data) {
         console.log(userEnterData);
         try {
-          const value = await axios.patch(`/api/v1/products/${id}`, {
-            name: userEnterData.name,
-            price: userEnterData.price,
-            description: userEnterData.description,
-            category: userEnterData.category,
-            inventory: userEnterData.inventory,
-            colors: userEnterData.colors,
-          });
+          const value = await axios.patch(
+            `https://e-commerece-server.onrender.com/api/v1/products/${id}`,
+            {
+              name: userEnterData.name,
+              price: userEnterData.price,
+              description: userEnterData.description,
+              category: userEnterData.category,
+              inventory: userEnterData.inventory,
+              colors: userEnterData.colors,
+            }
+          );
           console.log();
           // setUpload(value.data);
           if (value.data) {

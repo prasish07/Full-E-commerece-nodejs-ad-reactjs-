@@ -23,7 +23,9 @@ const Review = ({ id }) => {
   const fetchData = async () => {
     console.log(id);
     try {
-      const { data } = await axios.get(`/api/v1/products/${id}/review`);
+      const { data } = await axios.get(
+        `https://e-commerece-server.onrender.com/api/v1/products/${id}/review`
+      );
       console.log(data.reviews);
       setReview(data.reviews);
       setLoading(false);
@@ -42,7 +44,11 @@ const Review = ({ id }) => {
     e.preventDefault();
     console.log(value);
     try {
-      const post = await axios.post("/api/v1/review", value);
+      const post = await axios.post(
+        "https://e-commerece-server.onrender.com/api/v1/review",
+        value,
+        { withCredentials: true }
+      );
       console.log(post);
       dispatch(
         setPopup({ value: "true", message: "Thank you for your review!!" })

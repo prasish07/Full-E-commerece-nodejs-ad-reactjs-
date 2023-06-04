@@ -8,6 +8,8 @@ import { openPopup, setUser, setPopup } from "../../state/user";
 import Popup from "../../componets/Popup";
 import Cookies from "js-cookie";
 import { useGlobalContext } from "../../utils/context";
+import SetCookies from "../../hooks/SetCookies";
+import SetCookie from "../../hooks/SetCookies";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -30,8 +32,14 @@ const Login = () => {
     const { email, password } = values;
     const loginUser = { email, password };
     try {
-      const { data } = await axios.post(`/api/v1/auth/login`, loginUser);
+      const { data } = await axios.post(
+        `https://e-commerece-server.onrender.com/api/v1/auth/login`,
+        loginUser,
+        { withCredentials: true }
+      );
       if (data.success) {
+        console.log(data);
+        SetCookie("token", data.token);
         dispatch(setPopup({ value: "true", message: "Login Successfully!!!" }));
         saveUser(data.data);
 

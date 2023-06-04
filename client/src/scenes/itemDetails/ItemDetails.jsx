@@ -24,9 +24,12 @@ const ItemDetails = () => {
   };
 
   async function getItems() {
-    const items = await fetch("http://localhost:5000/api/v1/products", {
-      method: "GET",
-    });
+    const items = await fetch(
+      "https://e-commerece-server.onrender.com/api/v1/products",
+      {
+        method: "GET",
+      }
+    );
     const itemsJson = await items.json();
 
     setItems(itemsJson.products);
@@ -34,7 +37,7 @@ const ItemDetails = () => {
 
   async function getItem() {
     const item = await fetch(
-      `http://localhost:5000/api/v1/products/${itemId}`,
+      `https://e-commerece-server.onrender.com/api/v1/products/${itemId}`,
       {
         method: "GET",
       }

@@ -30,6 +30,7 @@ const ScrollToTop = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 };
+//comment
 
 const App = () => {
   return (

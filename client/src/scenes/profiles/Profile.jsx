@@ -38,12 +38,18 @@ const Profile = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("Image", file);
-    const { data } = await axios.post("api/v1/users/uploadProfile", formData);
+    const { data } = await axios.post(
+      "https://e-commerece-server.onrender.com/api/v1/users/uploadProfile",
+      formData
+    );
     console.log(data);
     if (data) {
-      const value = await axios.post("api/v1/users/uploadUserv2", {
-        image: data.image.src,
-      });
+      const value = await axios.post(
+        "https://e-commerece-server.onrender.com/api/v1/users/uploadUserv2",
+        {
+          image: data.image.src,
+        }
+      );
       setUpload(value.data);
       // Update the user data in localStorage
       const userData = localStorage.getItem("user");
@@ -57,11 +63,14 @@ const Profile = () => {
 
   const handleSubmitProfile = async () => {
     try {
-      const { data } = await axios.post("api/v1/users/uploadUserv2", {
-        name: value.name,
-        email: value.email,
-        aboutme: value.aboutme,
-      });
+      const { data } = await axios.post(
+        "https://e-commerece-server.onrender.com/api/v1/users/uploadUserv2",
+        {
+          name: value.name,
+          email: value.email,
+          aboutme: value.aboutme,
+        }
+      );
       console.log(data);
       if (data) {
         alert("User info has been updated!!");
@@ -78,10 +87,13 @@ const Profile = () => {
   };
   const handleSubmitPassword = async () => {
     try {
-      const { data } = await axios.patch("api/v1/users/updateUserPassword", {
-        oldPassword: value.password,
-        newPassword: value["New-password"],
-      });
+      const { data } = await axios.patch(
+        "https://e-commerece-server.onrender.com/api/v1/users/updateUserPassword",
+        {
+          oldPassword: value.password,
+          newPassword: value["New-password"],
+        }
+      );
       console.log(data);
       if (data) {
         alert("User password has been updated!!");
@@ -93,7 +105,9 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { data } = await axios.get(`/api/v1/users/${user._id}`);
+      const { data } = await axios.get(
+        `https://e-commerece-server.onrender.com/api/v1/users/${user._id}`
+      );
 
       console.log("Uploaded");
       dispatch(setUser(data.msg));

@@ -28,16 +28,19 @@ const AddProduct = () => {
     formData.append("Image", file);
     try {
       const { data } = await axios.post(
-        "/api/v1/users/uploadProfile",
+        "https://e-commerece-server.onrender.com/api/v1/users/uploadProfile",
         formData
       );
       if (data) {
         console.log(userEnterData);
         try {
-          const value = await axios.post("/api/v1/products", {
-            ...userEnterData,
-            image: data.image.src,
-          });
+          const value = await axios.post(
+            "https://e-commerece-server.onrender.com/api/v1/products",
+            {
+              ...userEnterData,
+              image: data.image.src,
+            }
+          );
           // setUpload(value.data);
           if (value.data) {
             dispatch(

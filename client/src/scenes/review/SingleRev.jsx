@@ -13,7 +13,10 @@ const SingleReview = ({ title, rating, comment, user }) => {
 
   const fetchUserImage = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/users/${user}`);
+      const { data } = await axios.get(
+        `https://e-commerece-server.onrender.com/api/v1/users/${user}`,
+        { withCredentials: true }
+      );
       if (data.success) {
         setImage(data.msg.image);
       }
